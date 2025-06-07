@@ -122,11 +122,13 @@ function App() {
 
   return (
     <div className="App">
-      <div className="header-row">
+      <div className="header-top">
         <h1>Voter Portal</h1>
         <p className="account-info">
           Connected Account: {account ? `${account.slice(0, 6)}...${account.slice(-4)}` : 'Not connected'}
         </p>
+      </div>
+      <div className="header-row">
         <select
           value={selectedEvent}
           onChange={(e) => setSelectedEvent(e.target.value)}
