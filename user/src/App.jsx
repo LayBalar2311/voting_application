@@ -58,7 +58,7 @@ function App() {
         setContract(contractInstance);
 
         // Fetch voting events
-        const eventsResponse = await axios.get('http://localhost:5000/api/voting-events');
+        const eventsResponse = await axios.get('https://voting-application-dx1w.onrender.com/api/voting-events');
         setVotingEvents(eventsResponse.data);
       } catch (err) {
         setError('Failed to connect to MetaMask: ' + err.message);
@@ -73,17 +73,17 @@ function App() {
     const fetchEventData = async () => {
       try {
         // Fetch voting status and candidates
-        const statusResponse = await axios.get(`http://localhost:5000/api/voting-events/${selectedEvent}/status`);
+        const statusResponse = await axios.get(`https://voting-application-dx1w.onrender.com/api/voting-events/${selectedEvent}/status`);
         setVotingStatus(statusResponse.data.isActive);
         setCandidates(statusResponse.data.candidates.map(c => c.name));
 
         // Fetch total votes
-        const txResponse = await axios.get(`http://localhost:5000/api/voting-events/${selectedEvent}/transactions`);
+        const txResponse = await axios.get(`https://voting-application-dx1w.onrender.com/api/voting-events/${selectedEvent}/transactions`);
         setTotalVotes(txResponse.data.length);
 
         // Fetch winner if voting is off
         if (!statusResponse.data.isActive) {
-          const winnerResponse = await axios.get(`http://localhost:5000/api/voting-events/${selectedEvent}/winner`);
+          const winnerResponse = await axios.get(`https://voting-application-dx1w.onrender.com/api/voting-events/${selectedEvent}/winner`);
           setWinner(winnerResponse.data.winner);
         } else {
           setWinner(null);
@@ -109,7 +109,7 @@ function App() {
     try {
       const tx = await contract.methods.vote(candidate).send({ from: account });
       const txData = { txHash: tx.transactionHash, voter: account, candidate };
-      await axios.post(`http://localhost:5000/api/voting-events/${selectedEvent}/transactions`, txData);
+      await axios.post(`https://voting-application-dx1w.onrender.com/api/voting-events/${selectedEvent}/transactions`, txData);
       alert('Vote successful!');
       setCandidate('');
       setTotalVotes(totalVotes + 1);
