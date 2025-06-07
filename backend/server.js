@@ -8,10 +8,27 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
+// backend/server.js
+const allowedOrigins = [
+  'https://voting-application-user.vercel.app',
+  'https://voting-application-admin.vercel.app',
+  'https://voting-application-dx1w.onrender.com', // Your backend itself
+  'http://localhost:3000' // For local testing
+];
 
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 // Voting Event Schema
 const votingEventSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
