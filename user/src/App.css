@@ -1,0 +1,293 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  color: #e0e0e0;
+}
+
+.App {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2em;
+  color: #d4af37;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.account-info {
+  font-size: 1em;
+  color: #b0b0b0;
+  margin: 0;
+  font-weight: 300;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 15px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.event-select, .candidate-select {
+  padding: 10px 30px 10px 15px;
+  width: 250px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="%23d4af37" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 15px center;
+  color: #ffffff;
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  appearance: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.event-select:focus, .candidate-select:focus {
+  border-color: #d4af37;
+  background: rgba(255, 255, 255, 0.15) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="%23e6c84c" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 15px center;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.event-select:disabled, .candidate-select:disabled {
+  background: rgba(255, 255, 255, 0.05) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 15px center;
+  cursor: not-allowed;
+  color: #a0a0a0;
+}
+
+.event-select option, .candidate-select option {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  padding: 10px 25px;
+  background: linear-gradient(45deg, #d4af37, #b8860b);
+  border: none;
+  border-radius: 25px;
+  color: #1a1a2e;
+  font-size: 1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+  height: 40px;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #e6c84c, #d4af37);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+button:disabled {
+  background: linear-gradient(45deg, #666, #444);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.vote-summary {
+  margin-top: 20px;
+}
+
+.total-votes {
+  font-size: 1.5em;
+  color: #d4af37;
+  font-weight: 400;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.voting-status {
+  font-size: 1.2em;
+  color: #b0b0b0;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.winner {
+  font-size: 1.5em;
+  color: #d4af37;
+  font-weight: 400;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5em;
+  color: #e0e0e0;
+  margin: 0 0 10px;
+}
+
+.candidate-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.candidate-list li {
+  padding: 8px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-size: 1em;
+  color: #d4af37;
+  transition: all 0.3s ease;
+}
+
+.candidate-list li:hover {
+  background: rgba(212, 175, 55, 0.2);
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .header-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  .account-info {
+    font-size: 0.9em;
+  }
+
+  .event-select, .candidate-select {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .total-votes, .voting-status, .winner {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 600px) {
+  .App {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .account-info {
+    font-size: 0.85em;
+    padding: 6px 10px;
+  }
+
+  button {
+    padding: 8px 20px;
+  }
+
+  .total-votes, .voting-status, .winner {
+    font-size: 1.2em;
+    padding: 8px 15px;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  .candidate-list li {
+    font-size: 0.9em;
+    padding: 6px 12px;
+  }
+}
