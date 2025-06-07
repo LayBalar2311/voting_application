@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const fetchVotingEvents = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/voting-events');
+        const response = await axios.get('https://voting-application-dx1w.onrender.com/api/voting-events');
         setVotingEvents(response.data);
       } catch (error) {
         console.error('Error fetching voting events:', error);
@@ -31,7 +31,7 @@ function App() {
     const fetchEventData = async () => {
       try {
         // Fetch transactions
-        const txResponse = await axios.get(`http://localhost:5000/api/voting-events/${selectedEvent}/transactions`);
+        const txResponse = await axios.get(`https://voting-application-dx1w.onrender.com/api/voting-events/${selectedEvent}/transactions`);
         const txData = txResponse.data;
         setTransactions(txData);
 
@@ -44,12 +44,12 @@ function App() {
         setCandidateVotes(votes);
 
         // Fetch voting status
-        const statusResponse = await axios.get(`http://localhost:5000/api/voting-events/${selectedEvent}/status`);
+        const statusResponse = await axios.get(`https://voting-application-dx1w.onrender.com/api/voting-events/${selectedEvent}/status`);
         setVotingStatus(statusResponse.data.isActive);
 
         // Fetch winner if voting is off
         if (!statusResponse.data.isActive) {
-          const winnerResponse = await axios.get(`http://localhost:5000/api/voting-events/${selectedEvent}/winner`);
+          const winnerResponse = await axios.get(`https://voting-application-dx1w.onrender.com/api/voting-events/${selectedEvent}/winner`);
           setWinner(winnerResponse.data.winner);
         } else {
           setWinner(null);
@@ -64,7 +64,7 @@ function App() {
   const createVotingEvent = async () => {
     if (!newEventName) return;
     try {
-      const response = await axios.post('http://localhost:5000/api/voting-events', { name: newEventName });
+      const response = await axios.post('https://voting-application-dx1w.onrender.com/api/voting-events', { name: newEventName });
       setVotingEvents([...votingEvents, response.data]);
       setNewEventName('');
       alert('Voting event created successfully!');
@@ -77,7 +77,7 @@ function App() {
   const addCandidate = async () => {
     if (!newCandidate || !selectedEvent) return;
     try {
-      await axios.post(`http://localhost:5000/api/voting-events/${selectedEvent}/candidates`, { name: newCandidate });
+      await axios.post(`https://voting-application-dx1w.onrender.com/api/voting-events/${selectedEvent}/candidates`, { name: newCandidate });
       setNewCandidate('');
       alert('Candidate added successfully!');
     } catch (error) {
@@ -89,7 +89,7 @@ function App() {
   const startVoting = async () => {
     if (!selectedEvent) return;
     try {
-      await axios.post(`http://localhost:5000/api/voting-events/${selectedEvent}/start`);
+      await axios.post(`https://voting-application-dx1w.onrender.com/api/voting-events/${selectedEvent}/start`);
       setVotingStatus(true);
       setWinner(null);
       alert('Voting started!');
@@ -102,9 +102,9 @@ function App() {
   const endVoting = async () => {
     if (!selectedEvent) return;
     try {
-      await axios.post(`http://localhost:5000/api/voting-events/${selectedEvent}/end`);
+      await axios.post(`https://voting-application-dx1w.onrender.com/api/voting-events/${selectedEvent}/end`);
       setVotingStatus(false);
-      const winnerResponse = await axios.get(`http://localhost:5000/api/voting-events/${selectedEvent}/winner`);
+      const winnerResponse = await axios.get(`https://voting-application-dx1w.onrender.com/api/voting-events/${selectedEvent}/winner`);
       setWinner(winnerResponse.data.winner);
       alert('Voting ended!');
     } catch (error) {
